@@ -7,7 +7,7 @@
     @if(count($posts) > 0)
         @foreach($posts as $post)
             <div class="card float-left m-1" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}" alt="Card image cap">
                 <div class="card-body">   
                     <h3 class="card-title"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>        
                     <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
