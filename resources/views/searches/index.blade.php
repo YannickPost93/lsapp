@@ -1,9 +1,17 @@
+@section('title')
+	| Search on {{ $s }}
+@endsection
+
 @extends('layouts.app')
 
 @section('content')
-   
-    
+
     <h1>Posts</h1>
+
+    <div class="blog-header">
+		<h1 class="blog-title">Searching for "{{ $s }}"</h1>
+		<p>We've found {{ $posts->count() }} results for your search term in all blog entries</p>
+	</div>
 
     <form action="/search/" method="GET">
         <input type="text" class="form-control" name="s" value="{{ Request::query('s') }}" placeholder="Search this site..." />
@@ -20,8 +28,10 @@
             </div>
         @endforeach
         {{$posts->links()}}
-    @else 
-        <p>No Posts Found</p>
+        @else
+
+        <p>No post martch on your term <strong>{{ $s }}</strong></p>
+
     @endif
                
 @endsection
