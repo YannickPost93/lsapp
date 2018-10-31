@@ -9,6 +9,8 @@
         {!!$post->body!!}
     </div>
     <hr>
+    Posted In: {{$post->category->name}}
+    <hr>
     <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
     <hr>
     @if(!Auth::guest())
