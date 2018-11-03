@@ -39,6 +39,17 @@
                     @else 
                         <p>You have no posts</p>
                     @endif
+                @if(Auth::user()->role_id == 1)    
+                    <h3>Other Posts</h3>
+                    <table class="table table-striped">
+                            <tr>
+                                <th>Title</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </table>
+                        
+                @endif
                 </div>
             </div>
         </div>

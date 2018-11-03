@@ -8,6 +8,18 @@
     <form action="/search/" method="GET">
         <input type="text" class="form-control" name="s" value="{{ Request::query('s') }}" placeholder="Search this site..." />
     </form>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categories
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            @foreach ($categories as $category)
+                <a class="dropdown-item" href="{{ route('category', $category->id) }}">{{$category->name}}<span class="badge pull-right">{{ $category->posts->count() }}</span></a>
+            @endforeach  
+        </div>
+    </div>
+        
+            
     
     @if(count($posts) > 0)
         @foreach($posts as $post)

@@ -23,3 +23,7 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
 
+Route::get('/category/{category}', [
+    'uses' => 'PostsController@category',
+    'as'   => 'category'
+]);

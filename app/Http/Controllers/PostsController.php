@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
+use App\Category;
 use DB;
 
 class PostsController extends Controller
@@ -28,12 +29,26 @@ class PostsController extends Controller
      */
     public function index()
     {
+        $categories = Category::with('posts')->orderBy('name', 'asc')->get();
         //$posts = Post::all();
         // $posts = Post::orderBy('title', 'desc')->(take(1)->get();
         //$posts = Post::orderBy('title', 'desc')->get();
         $posts = Post::orderBy('created_at', 'desc')->paginate(6);
-        return view('posts.index')->with('posts', $posts);
+        // return view('posts.index')->with('posts', $posts);
+        return view('posts.index', array('posts' => $posts, 'categories' => $categories));
     }
+
+    public function category($id)
+    {
+       // $categories = Category::with('posts')->get();
+        //$posts = Post::all();
+        // $posts = Post::orderBy('title', 'desc')->(take(1)->get();
+        //$posts = Post::orderBy('title', 'desc')->get();
+       // $posts = Post::orderBy('created_at', 'desc')->where('category_id', $id);
+        // return view('posts.index')->with('posts', $posts);
+       // return view('posts.index', array('posts' => $posts, 'categories' => $categories));
+    }
+
 
     /**
      * Show the form for creating a new resource.

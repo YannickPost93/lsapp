@@ -28,4 +28,10 @@ class DashboardController extends Controller
         $user = User::find($user_id);
         return view('dashboard')->with('posts', $user->posts);
     }
+
+    public function ShowUserlist(){
+        $user = User::all();
+        return view('dashboard', compact('users'));
+    }
+
 }
